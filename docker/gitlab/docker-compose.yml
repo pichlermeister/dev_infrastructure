@@ -1,0 +1,23 @@
+version: '2'
+services:
+  gitlab:
+    network_mode: bridge
+    image: gitlab/gitlab-ce:latest
+    hostname: 'gitlab.local'
+    restart: always
+    environment:
+     GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.99.8'
+    volumes:
+      - 'config:/etc/gitlab'
+      - 'logs:/var/log/gitlab'
+      - 'data:/var/opt/gitlab'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8022:22'
+volumes:
+  config: {}
+  logs: {}
+  data: {}
+

@@ -1,0 +1,12 @@
+version: '2'
+services:
+  jenkins:
+    network_mode: bridge
+    image: jenkins:latest
+    restart: always
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    ports:
+      - "8080:8080"
+volumes:
+  jenkins_home: {}

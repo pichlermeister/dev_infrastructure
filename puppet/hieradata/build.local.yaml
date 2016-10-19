@@ -1,0 +1,8 @@
+hieratest: 'it works! hieradata/build.yaml'
+
+classes:
+  - docker::images
+    
+docker::images::images:
+  jenkins:
+    docker_file: '/vagrant/docker/jenkins/Dockerfile'

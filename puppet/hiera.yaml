@@ -1,0 +1,11 @@
+:hierarchy:
+  - "node/%{::domain}/%{::hostname}"
+  - "node/%{::domain}/common"
+  - "%{::fqdn}"
+  - common
+  - private
+
+:backends:
+  - yaml
+:yaml:
+  :datadir: '/vagrant/puppet/hieradata'

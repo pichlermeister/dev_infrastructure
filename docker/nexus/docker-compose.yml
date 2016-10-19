@@ -1,0 +1,12 @@
+version: '2'
+services:
+  nexus3:
+    network_mode: bridge
+    image: sonatype/nexus3:latest
+    restart: always
+    volumes:
+      - nexus-data:/nexus-data
+    ports:
+      - "8081:8081"
+volumes:
+  nexus-data: {}
