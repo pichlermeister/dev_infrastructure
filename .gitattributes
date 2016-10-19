@@ -1,3 +1,8 @@
 # set everything to linux line endings to be able to sync with vagrant.
 # we do not have windows machines that we provision with puppet, so this should be fine.
 * text eol=lf
+
+.project text=auto
+
+# Denote all files that are truly binary and should not be modified.
+*.jar binary
