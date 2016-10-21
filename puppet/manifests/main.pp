@@ -4,30 +4,14 @@ Exec {
 node default {
 }
 
-node "git.local" {
-    include 'docker'
-    class {'docker::compose': 
-      ensure => present,
-    }
-    docker_compose { '/vagrant/docker/gitlab/docker-compose.yml':
-      ensure  => present,
-    }
-}
-
 node "build.local" {
     include 'docker'
     class {'docker::compose': 
       ensure => present,
     }
     hiera_include('classes')
+    
+    $my_hash = hiera('docker_compose', {})
+    create_resources('docker_compose', $my_hash)
 
-    docker_compose { '/vagrant/docker/jenkins/docker-compose.yml':
-      ensure  => present,
-    }
-    docker_compose { '/vagrant/docker/nexus/docker-compose.yml':
-      ensure  => present,
-    }
-    docker_compose { '/vagrant/docker/sonar/docker-compose.yml':
-      ensure  => present,
-    }
 }
