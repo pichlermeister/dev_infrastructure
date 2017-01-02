@@ -1,14 +1,14 @@
 hieratest: 'it works! hieradata/build.yaml'
 
 classes:
-  - docker::images
-    
-docker::images::images:
-  jenkins:
-    docker_file: '/vagrant/docker/jenkins/Dockerfile'
-    
+  - docker
+  - docker::compose
 
-    
+docker::compose:
+  ensure: present
+
+
+
 docker_compose:
   '/vagrant/docker/nexus/docker-compose.yml':
     ensure: present
@@ -20,4 +20,3 @@ docker_compose:
     ensure: present
   '/vagrant/docker/nginx-proxy/docker-compose.yml':
     ensure: present
-  

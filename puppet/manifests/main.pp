@@ -5,12 +5,10 @@ node default {
 }
 
 node "build.local" {
-    include 'docker'
-    class {'docker::compose': 
-      ensure => present,
-    }
     hiera_include('classes')
-    
+#    class {'docker::compose':
+#      ensure => present,
+#    }
     $my_hash = hiera('docker_compose', {})
     create_resources('docker_compose', $my_hash)
 
